@@ -5,7 +5,6 @@ import { addUser } from '../actions/users.js'
 export default React.createClass({
   handleSubmit (user) {
     const { dispatch } = this.props
-
     dispatch(addUser(user))
     dispatch(actions.reset('forms.user'))
   },
@@ -14,18 +13,23 @@ export default React.createClass({
     return (
       <Form model="forms.user"
         onSubmit={user => this.handleSubmit(user)}>
-        <label>First name:</label>
-        <Control.text model=".firstName" />
+        <div className="four columns">
+          <label>First name:</label>
+          <Control.text model=".firstName" />
+        </div>
 
-        <label>Last name:</label>
-        <Control.text model=".lastName" />
+        <div className="four columns">
+          <label>Last name:</label>
+          <Control.text model=".lastName" />
+        </div>
 
-        <label>Mobile:</label>
-        <Control.text model=".mobile" />
+        <div className="four columns">
+          <label>Mobile:</label>
+          <Control.text model=".mobile" />
+        </div>
 
-        <button type="submit">
-          AddUser
-        </button>
+        <hr />
+        <button type="submit">Add</button>
       </Form>
     )
   }

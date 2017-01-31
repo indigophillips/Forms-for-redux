@@ -8,12 +8,19 @@ export default React.createClass({
   render () {
     return (
       <div className="users">
-        <ul>
-          {this.props.users.map((user, i) => (
-            <li key={i}>{user.firstName} {user.lastName} {user.phone} {user.mobile}</li>
-          ))}
-        </ul>
-        <UserForm dispatch={this.props.dispatch} />
+        <div className="row">
+          <div className="twelve columns">
+            <ul>
+              {this.props.users.map((user, i) => (
+                <li key={i}>{user.firstName} {user.lastName} {user.phone} {user.mobile}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="row">
+          <UserForm dispatch={this.props.dispatch} />
+        </div>
       </div>
     )
   },
