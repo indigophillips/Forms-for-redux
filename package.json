@@ -1,0 +1,24 @@
+{
+  "name": "react-redux-form-demo",
+  "version": "0.1.0",
+  "description": "Form examples using react-redux-form",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/react-redux-form.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "form"
+  ],
+  "author": "EDA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/react-redux-form/issues"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/react-redux-form#readme"
+}
