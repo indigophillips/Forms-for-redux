@@ -8,7 +8,5 @@ const mapStateToProps = ({ users }) => {
   }
 }
 
-export default connect(
-  mapStateToProps
-)(Users)
+export default connect(mapStateToProps)(Users)
 

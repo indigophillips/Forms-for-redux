@@ -26,5 +26,10 @@ export default React.createClass({
   },
 
   propTypes: {
+    users: PropTypes.arrayOf(Proptypes.shape(
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string,
+      mobile: PropTypes.string
+    )).isRequired
   }
 })
