@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react'
+import React, { PropTypes } from 'react'
 
 import UserForm from './UserForm'
 
@@ -26,10 +26,10 @@ export default React.createClass({
   },
 
   propTypes: {
-    users: PropTypes.arrayOf(Proptypes.shape(
+    users: PropTypes.arrayOf(PropTypes.shape({
       firstName: PropTypes.string.isRequired,
       lastName: PropTypes.string,
       mobile: PropTypes.string
-    )).isRequired
+    })).isRequired
   }
 })
