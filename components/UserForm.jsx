@@ -1,8 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Control, Form, actions } from 'react-redux-form'
+
 import { addUser } from '../actions/users.js'
 
-export default React.createClass({
+const UserForm = React.createClass({
   handleSubmit (user) {
     const { dispatch } = this.props
     dispatch(addUser(user))
@@ -35,3 +37,5 @@ export default React.createClass({
   }
 })
 
+// The use of `connect` with no arguments here makes `dispatch` available
+export default connect()(UserForm)

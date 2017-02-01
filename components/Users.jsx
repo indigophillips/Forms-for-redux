@@ -19,7 +19,7 @@ export default React.createClass({
         </div>
 
         <div className="row">
-          <UserForm dispatch={this.props.dispatch} />
+          <UserForm />
         </div>
       </div>
     )
