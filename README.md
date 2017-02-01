@@ -95,14 +95,14 @@ There's a _little_ extra boilerplate, but not too much. Mainly `combineForms`, a
   const mapDispatchToProps = dispatch => ({ dispatch })
 ```
 
-If the form isn't the target component of the `connect` call, we might also need to pass dispatch as a prop:
+If the form isn't the target component of the `connect` call (a child component, for example) we might need to explicitly connect to make `dispatch` available as a prop:
 
 ```js
-  render () {
-    <div>
-      {/* other stuff */}
+  import { connect } from 'react-redux'
 
-      <UserForm dispatch={this.props.dispatch} />
-    </div>
-  }
+  const UserForm = React.createClass({
+    // ...
+  })
+
+  export default connect()(UserForm)
 ```
