@@ -89,13 +89,7 @@ In the function called by `onSubmit`, any number of dispatch calls can be made (
 
 ## Boilerplate
 
-There's a _little_ extra boilerplate, but not too much. Mainly `combineForms`, and making sure `dispatch` is available from the container to any child components, which boils down to:
-
-```js
-  const mapDispatchToProps = dispatch => ({ dispatch })
-```
-
-If the form isn't the target component of the `connect` call (a child component, for example) we might need to explicitly connect to make `dispatch` available as a prop:
+There's a _little_ extra boilerplate, but not too much (mainly `combineForms`). If the form isn't the target component of the `connect` call (a child component, for example) we might need to explicitly connect the component to make `dispatch` available as a prop:
 
 ```js
   import { connect } from 'react-redux'
