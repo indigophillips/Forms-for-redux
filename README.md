@@ -1,6 +1,6 @@
 # react-redux-form-demo
 
-Form handling with react-redux-form.
+Form handling with react-redux-form. Note that there is a repo with examples of non-Redux form handling at https://github.com/dev-academy-challenges/react-form-demo.
 
 
 ## Install & run
@@ -13,78 +13,62 @@ npm start
 
 ## Things to look at
 
-Notice that the `combineReducers` call in `reducers/index` now contains a call to `combineForms`, passing it a model object. It can take as many of these as you have forms.
+Notice that the `combineReducers` call in `reducers/index.js` now contains forms defined in `reducers/forms.js` using the function `combineForms`, passing it a model object. It can take as many of these as you have forms.
 
 ```js
-// Our users reducer, managing an array of user objects on the Redux store
-import users from './users'
+import { createForms } from 'react-redux-form'
 
-// An initial state object for react-redux-form
-const user = {
-  firstName: '',
-  lastName: '',
-  phone: '',
-  mobile: ''
+import items from './items'
+
+export const item = {
+  name: '',
+  description: '',
+  appearance: {
+    color: 'aliceblue'
+  }
 }
 
-// Combine the two into one reducing function
-export default combineReducers({
-  users,
-  forms: combineForms({ user }, 'forms')
-})
-
-```
-The initial model object is just a bunch of empty string properties, though they can get more complex. We could move the `combineForms` call out into its own module as it became more complex.
-
-```js
-import users from './users'
-import forms from './forms'
-
-export default combineReducers({
-  users,
-  forms
+export default createForms({
+  item,
+  items
 })
 ```
+
+The initial model object is mostly just a bunch of empty string properties, though they can get more complex. The `appearance` object is handled by a `Fieldset` component, kept in `components/ColorChooser.jsx`.
 
 RRF provides its own form components, and associates each with a model:
 
 ```js
-import { Control, Form, actions } from 'react-redux-form'
+import { actions, Control, Form } from 'react-redux-form'
 
 export default React.createClass({
-  handleSubmit (user) {
+  handleSubmit (item) {
     const { dispatch } = this.props
-    dispatch(addUser(user))
-    dispatch(actions.reset('forms.user'))
+    dispatch(addItem(item))
+    dispatch(actions.reset('item'))
   },
 
   render () {
     return (
-      <Form model="forms.user"
-        onSubmit={user => this.handleSubmit(user)}>
+      <Form model="item"
+        onSubmit={this.handleSubmit}>
 
-        <label>First name:</label>
-        <Control.text model=".firstName" />
+        <label>Name:</label>
+        <Control.text model=".name" />
 
-        <label>Last name:</label>
-        <Control.text model=".lastName" />
+        <label>Description:</label>
+        <Control.textarea model=".description" />
 
-        <label>Mobile:</label>
-        <Control.text model=".mobile" />
+        <ColorChooser colors={this.itemColors} />
 
         <button type="submit">Add</button>
       </Form>
     )
   }
 })
-
 ```
 
-In the function called by `onSubmit`, any number of dispatch calls can be made (including `actions.submit` which takes a model name and a promise-returning function. We can make API calls and update the form state depending on the server response (for example, rejecting an image that was too large).
-
-```js
-  dispatch(actions.submit('forms.user', api.sendUserToServer))
-```
+In the function called by `onSubmit`, any number of dispatch calls can be made. We can make API calls and update the form state depending on the server response (for example, rejecting an image that was too large).
 
 
 ## Boilerplate
@@ -94,9 +78,9 @@ There's a _little_ extra boilerplate, but not too much (mainly `combineForms`). 
 ```js
   import { connect } from 'react-redux'
 
-  const UserForm = React.createClass({
+  const ItemForm = React.createClass({
     // ...
   })
 
-  export default connect()(UserForm)
+  export default connect()(ItemForm)
 ```
