@@ -1,17 +1,7 @@
 import { combineReducers } from 'redux'
-import { combineForms } from 'react-redux-form'
 
-import users from './users'
-
-const user = {
-  firstName: '',
-  lastName: '',
-  phone: '',
-  mobile: ''
-}
+import forms from './forms'
 
 export default combineReducers({
-  users,
-  forms: combineForms({ user }, 'forms')
+  ...forms
 })
-

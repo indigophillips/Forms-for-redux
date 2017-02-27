@@ -1,13 +1,13 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
-import reducers from './reducers'
+import { getItems } from './localDb'
+import reducer from './reducers'
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export default createStore(
-  reducers,
-  compose(
-    applyMiddleware(thunkMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
-  )
+  reducer,
+  { items: getItems() },
+  composeEnhancers(applyMiddleware(thunkMiddleware))
 )
-

@@ -1,11 +1,10 @@
 {
   "name": "react-redux-form-demo",
   "version": "0.1.0",
-  "description": "Form examples using react-redux-form",
+  "description": "Form handling using React Redux Form",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --hot"
   },
   "repository": {
     "type": "git",
@@ -18,30 +17,27 @@
   ],
   "author": "EDA",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dev-academy-challenges/react-redux-form/issues"
-  },
-  "homepage": "https://github.com/dev-academy-challenges/react-redux-form#readme",
   "devDependencies": {
-    "babel-core": "^6.22.1",
-    "babel-loader": "^6.2.10",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
-    "babel-preset-react": "^6.22.0",
-    "babel-preset-stage-2": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-modal": "^1.6.5",
     "react-redux": "^5.0.2",
-    "react-redux-form": "^1.5.4",
+    "react-redux-form": "^1.6.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.2.1"
+    "webpack-dev-server": "^2.4.1"
   },
   "babel": {
     "presets": [
       "es2015",
       "react",
-      "stage-2"
+      "stage-0"
     ]
   }
 }

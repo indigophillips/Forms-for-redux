@@ -1,10 +1,11 @@
 import React from 'react'
+import { render } from 'react-dom'
 
-import UsersContainer from '../containers/UsersContainer'
+import ItemsContainer from '../containers/ItemsContainer.js'
 
 const App = () => (
-  <div>
-    <UsersContainer />
+  <div className="container">
+    <ItemsContainer />
   </div>
 )
 

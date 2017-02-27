@@ -1,8 +1,6 @@
 module.exports = {
   entry: './index.js',
-  output: {
-    filename: 'bundle.js'
-  },
+  output: 'bundle.js',
   module: {
     loaders: [
       { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ }
@@ -10,6 +8,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx']
+  },
+  devServer: {
+    compress: true,
+    hot: true,
   },
   devtool: 'source-map'
 }
