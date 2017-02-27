@@ -1,6 +1,6 @@
-# react-redux-form-demo
+# React Redux Form (RRF) Demo
 
-Form handling with react-redux-form. Note that there is a repo with examples of non-Redux form handling at https://github.com/dev-academy-challenges/react-form-demo.
+Form handling with RRF. Note that there is a repo with examples of non-Redux form handling at https://github.com/dev-academy-challenges/react-form-demo.
 
 
 ## Install & run
