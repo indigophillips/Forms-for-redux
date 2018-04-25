@@ -6,8 +6,8 @@ Form handling with RRF. Note that there is a repo with examples of non-Redux for
 ## Install & run
 
 ```shell
-npm install
-npm start
+yarn
+yarn start
 ```
 
 
@@ -16,7 +16,7 @@ npm start
 Notice that the `combineReducers` call in `reducers/index.js` now contains forms defined in `reducers/forms.js` using the function `combineForms`, passing it a model object. It can take as many of these as you have forms.
 
 ```js
-import { createForms } from 'react-redux-form'
+import {createForms} from 'react-redux-form'
 
 import items from './items'
 
@@ -28,10 +28,7 @@ export const item = {
   }
 }
 
-export default createForms({
-  item,
-  items
-})
+export default createForms({item, items})
 ```
 
 The initial model object is mostly just a bunch of empty string properties, though they can get more complex. The `appearance` object is handled by a `Fieldset` component, kept in `components/ColorChooser.jsx`.
@@ -39,19 +36,23 @@ The initial model object is mostly just a bunch of empty string properties, thou
 RRF provides its own form components, and associates each with a model:
 
 ```js
-import { actions, Control, Form } from 'react-redux-form'
+import {actions, Control, Form} from 'react-redux-form'
 
-export default React.createClass({
+class MyComponent extends React.Component{
+  constructor (props) {
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
   handleSubmit (item) {
-    const { dispatch } = this.props
+    const {dispatch} = this.props
     dispatch(addItem(item))
     dispatch(actions.reset('item'))
-  },
+  }
 
   render () {
     return (
-      <Form model="item"
-        onSubmit={this.handleSubmit}>
+      <Form model="item" onSubmit={this.handleSubmit}>
 
         <label>Name:</label>
         <Control.text model=".name" />
@@ -59,13 +60,13 @@ export default React.createClass({
         <label>Description:</label>
         <Control.textarea model=".description" />
 
-        <ColorChooser colors={this.itemColors} />
+        <ColorChooser colors={itemColors} />
 
         <button type="submit">Add</button>
       </Form>
     )
   }
-})
+}
 ```
 
 In the function called by `onSubmit`, any number of dispatch calls can be made. We can make API calls and update the form state depending on the server response (for example, rejecting an image that was too large).
@@ -76,11 +77,11 @@ In the function called by `onSubmit`, any number of dispatch calls can be made. 
 There's a _little_ extra boilerplate, but not too much (mainly `combineForms`). If the form isn't the target component of the `connect` call (a child component, for example) we might need to explicitly connect the component to make `dispatch` available as a prop:
 
 ```js
-  import { connect } from 'react-redux'
+  import {connect} from 'react-redux'
 
-  const ItemForm = React.createClass({
+  class ItemForm extends React.Component {
     // ...
-  })
+  }
 
   export default connect()(ItemForm)
 ```

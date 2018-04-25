@@ -1,4 +1,4 @@
-import { item as itemModel } from './reducers/forms'
+import {item as itemModel} from './reducers/forms'
 
 // http://stackoverflow.com/a/2117523/122643, more or less...
 const generateUUID = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {

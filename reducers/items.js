@@ -7,10 +7,10 @@ const items = (state = [], action) => {
       return [...state, action.item]
 
     case 'EDIT_ITEM':
-      return state.map(r => r.id === action.id ? { ...r, isEditing: true } : r)
+      return state.map(r => r.id === action.id ? {...r, isEditing: true} : r)
 
     case 'STOP_EDITING':
-      return state.map(r => r.isEditing ? { ...r, isEditing: false } : r)
+      return state.map(r => r.isEditing ? {...r, isEditing: false} : r)
 
     case 'SAVE_ITEM':
       return state.map(r => r.id === action.id ? action.item : r)

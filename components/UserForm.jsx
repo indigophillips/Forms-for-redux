@@ -1,20 +1,25 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { Control, Form, actions } from 'react-redux-form'
+import {connect} from 'react-redux'
+import {Control, Form, actions} from 'react-redux-form'
 
-import { addUser } from '../actions/users.js'
+import {addUser} from '../actions/users.js'
 
-const UserForm = React.createClass({
+class UserForm extends React.Component {
+  constructor (props) {
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
   handleSubmit (user) {
-    const { dispatch } = this.props
+    const {dispatch} = this.props
     dispatch(addUser(user))
     dispatch(actions.reset('forms.user'))
-  },
+  }
 
   render () {
     return (
       <Form model="forms.user"
-        onSubmit={user => this.handleSubmit(user)}>
+        onSubmit={this.handleSubmit}>
         <div className="four columns">
           <label>First name:</label>
           <Control.text model=".firstName" />
@@ -35,7 +40,6 @@ const UserForm = React.createClass({
       </Form>
     )
   }
-})
+}
 
-// The use of `connect` with no arguments here makes `dispatch` available
 export default connect()(UserForm)

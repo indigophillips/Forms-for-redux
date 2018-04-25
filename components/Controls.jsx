@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Controls = ({ id, isEditing, editItem, deleteItem, submitItem }) => {
+const Controls = ({id, isEditing, editItem, deleteItem, submitItem}) => {
   if (isEditing) {
     return (
       <td className="item-controls">

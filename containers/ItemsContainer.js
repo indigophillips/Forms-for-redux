@@ -1,13 +1,9 @@
-import { connect } from 'react-redux'
-import { actions, track } from 'react-redux-form'
+import {connect} from 'react-redux'
 
 import Items from '../components/Items'
-import {
-  deleteItem,
-  editItem
-} from '../actions/items'
+import {deleteItem, editItem} from '../actions/items'
 
-const mapStateToProps = ({ items }) => {
+const mapStateToProps = ({items}) => {
   return {
     items
   }
@@ -18,4 +14,5 @@ const mapDispatchToProps = dispatch => {
     editItem: id => dispatch(editItem(id))
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Items)

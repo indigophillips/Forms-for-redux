@@ -1,4 +1,4 @@
-import { createForms } from 'react-redux-form'
+import {createForms} from 'react-redux-form'
 
 import items from './items'
 
