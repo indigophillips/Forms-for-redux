@@ -8,6 +8,7 @@ const mapStateToProps = ({items}) => {
     items
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     deleteItem: id => dispatch(deleteItem(id)),
